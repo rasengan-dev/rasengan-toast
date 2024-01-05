@@ -25,6 +25,15 @@ export default function reducer(state: ToastState, action: ToastAction) {
 
       return prevState;
     }
+    case ToastActionType.REMOVE_TOAST: {
+      const index = prevState.toasts.findIndex(
+        (toast) => toast.id === action.payload.id
+      );
+
+      prevState.toasts.splice(index, 1);
+
+      return prevState;
+    }
     default:
       return state;
   }
